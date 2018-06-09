@@ -81,6 +81,7 @@ namespace Demo.QuickPay.Biz
             }
 
             //Persist payment
+            payment.PaymentDate = DateTime.UtcNow;
             PaymentRepo paymentRepo = new PaymentRepo();
             paymentRepo.Insert(payment);
 
