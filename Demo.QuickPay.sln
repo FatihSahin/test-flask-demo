@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.QuickPay.WebApi", "Demo.QuickPay.WebApi\Demo.QuickPay.WebApi.csproj", "{EF9C91B6-F203-4A46-B754-E0CFC6BC50A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{C5F81429-7C9C-4049-A51E-BB8B36FB1FBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.QuickPay.Biz", "Demo.QuickPay.Biz\Demo.QuickPay.Biz.csproj", "{622F864D-0B2F-4A92-A158-C0A18EA47863}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9305AFEE-2BEB-49A2-BAAF-E7D45F3174CB} = {9305AFEE-2BEB-49A2-BAAF-E7D45F3174CB}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalCompany.Services", "ExternalCompany.Services\ExternalCompany.Services.csproj", "{9305AFEE-2BEB-49A2-BAAF-E7D45F3174CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.QuickPay.Data", "Demo.QuickPay.Data\Demo.QuickPay.Data.csproj", "{96E7F439-B770-4AA7-A739-B33959820D78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF9C91B6-F203-4A46-B754-E0CFC6BC50A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF9C91B6-F203-4A46-B754-E0CFC6BC50A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF9C91B6-F203-4A46-B754-E0CFC6BC50A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF9C91B6-F203-4A46-B754-E0CFC6BC50A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{622F864D-0B2F-4A92-A158-C0A18EA47863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{622F864D-0B2F-4A92-A158-C0A18EA47863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{622F864D-0B2F-4A92-A158-C0A18EA47863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{622F864D-0B2F-4A92-A158-C0A18EA47863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9305AFEE-2BEB-49A2-BAAF-E7D45F3174CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9305AFEE-2BEB-49A2-BAAF-E7D45F3174CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9305AFEE-2BEB-49A2-BAAF-E7D45F3174CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9305AFEE-2BEB-49A2-BAAF-E7D45F3174CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96E7F439-B770-4AA7-A739-B33959820D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96E7F439-B770-4AA7-A739-B33959820D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96E7F439-B770-4AA7-A739-B33959820D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96E7F439-B770-4AA7-A739-B33959820D78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9305AFEE-2BEB-49A2-BAAF-E7D45F3174CB} = {C5F81429-7C9C-4049-A51E-BB8B36FB1FBA}
+	EndGlobalSection
+EndGlobal

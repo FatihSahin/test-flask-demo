@@ -1,0 +1,26 @@
+﻿[
+  {
+    "customerId": 101,
+    "fullName": "Fatih Sahin",
+    "birthDate": "1981-05-29",
+    "isPremium": false
+  },
+  {
+    "customerId": 102,
+    "fullName": "Vito Corleone",
+    "birthDate": "1887-04-29", //godfather.wikia.com/wiki/Vito_Corleone
+    "isPremium": true
+  },
+  {
+    "customerId": 103,
+    "fullName": "Coco",
+    "birthDate": "2017-01-01",
+    "isPremium": false
+  },
+  {
+    "customerId": 201,
+    "fullName": "Mr. Bean",
+    "birthDate": "1955-01-06",
+    "isPremium": false
+  }
+]

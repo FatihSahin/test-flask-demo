@@ -1,0 +1,26 @@
+﻿[
+  {
+    "customerId": 101,
+    "accountNumber": "D101",
+    "isOpen": false,
+    "balance": 100
+  },
+  {
+    "customerId": 102,
+    "accountNumber": "D102",
+    "isOpen": true,
+    "balance": 100
+  },
+  {
+    "customerId": 103,
+    "accountNumber": "D103",
+    "isOpen": true,
+    "balance": 5
+  },
+  {
+    "customerId": 201,
+    "accountNumber": "C201",
+    "isOpen": true,
+    "balance": 0
+  }
+]
