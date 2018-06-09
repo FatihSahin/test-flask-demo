@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Demo.QuickPay.Data.Context
 {
-    public enum FeeType
+    public enum FeeType : byte
     {
         RegularFee = 1,
         PremiumFee = 2

@@ -18,6 +18,11 @@ namespace Demo.QuickPay.Biz
         private readonly AccountIntegrator accountIntegrator;
         private readonly CustomerIntegrator customerIntegator;
 
+        static TransferMoneyBiz()
+        {
+            InitErrors();
+        }
+
         public TransferMoneyBiz()
         {
             feeCalculator = new FeeCalculator();
@@ -32,7 +37,7 @@ namespace Demo.QuickPay.Biz
 
             if (customer == null)
             {
-                return new PaymentResult { IsSuccessful = false, ErrorCode = "CUSTOMER_NOT_FOUND", ErrorMessage = "Customer was not found." };
+                return ProvideErrorResult(CUSTOMER_NOT_FOUND);
             }
 
             //Check credit account
@@ -40,12 +45,12 @@ namespace Demo.QuickPay.Biz
 
             if (creditAccount == null)
             {
-                return new PaymentResult { IsSuccessful = false, ErrorCode = "CREDIT_ACC_NOT_FOUND", ErrorMessage = "Credit account was not found." };
+                return ProvideErrorResult(CREDIT_ACC_NOT_FOUND);
             }
 
             if (!creditAccount.IsOpen)
             {
-                return new PaymentResult { IsSuccessful = false, ErrorCode = "CREDIT_ACC_CLOSED", ErrorMessage = "Credit account is closed." };
+                return ProvideErrorResult(CREDIT_ACC_CLOSED);
             }
 
             //Check debit account status
@@ -53,12 +58,17 @@ namespace Demo.QuickPay.Biz
 
             if (debitAccount == null)
             {
-                return new PaymentResult { IsSuccessful = false, ErrorCode = "DEBIT_ACC_NOT_FOUND", ErrorMessage = "Credit account was not found." };
+                return ProvideErrorResult(DEBIT_ACC_NOT_FOUND);
+            }
+
+            if (debitAccount.CustomerId != customer.CustomerId)
+            {
+                return ProvideErrorResult(DEBIT_ACC_NOT_OWNED);
             }
 
             if (!debitAccount.IsOpen)
             {
-                return new PaymentResult { IsSuccessful = false, ErrorCode = "DEBIT_ACC_CLOSED", ErrorMessage = "Debit account was not found." };
+                return ProvideErrorResult(DEBIT_ACC_CLOSED);
             }
 
             //Calculate fee
@@ -67,7 +77,7 @@ namespace Demo.QuickPay.Biz
             //Check balance
             if (debitAccount.Balance < (payment.Amount + fee.FeeAmount))
             {
-                return new PaymentResult { IsSuccessful = false, ErrorCode = "BALANCE_NOT_AVAILABLE", ErrorMessage = "Debit account balance is not available." };
+                return ProvideErrorResult(BALANCE_NOT_AVAILABLE);
             }
 
             //Persist payment
@@ -76,5 +86,39 @@ namespace Demo.QuickPay.Biz
 
             return new PaymentResult { IsSuccessful = true };
         }
+
+        #region Errors
+
+        private const string CUSTOMER_NOT_FOUND = "CUSTOMER_NOT_FOUND";
+        private const string CREDIT_ACC_NOT_FOUND = "CREDIT_ACC_NOT_FOUND";
+        private const string CREDIT_ACC_CLOSED = "CREDIT_ACC_CLOSED";
+        private const string DEBIT_ACC_NOT_OWNED = "DEBIT_ACC_NOT_OWNED";
+        private const string DEBIT_ACC_NOT_FOUND = "DEBIT_ACC_NOT_FOUND";
+        private const string DEBIT_ACC_CLOSED = "DEBIT_ACC_CLOSED";
+        private const string BALANCE_NOT_AVAILABLE = "BALANCE_NOT_AVAILABLE";
+
+        private static Dictionary<string, string> errDictionary = new Dictionary<string, string>();
+        private static void InitErrors()
+        {
+            errDictionary.Add(CUSTOMER_NOT_FOUND, "Customer was not found.");
+            errDictionary.Add(CREDIT_ACC_NOT_FOUND, "Credit account was not found.");
+            errDictionary.Add(CREDIT_ACC_CLOSED, "Credit account is closed."); 
+            errDictionary.Add(DEBIT_ACC_NOT_FOUND, "Debit account was not found.");
+            errDictionary.Add(DEBIT_ACC_NOT_OWNED, "Debit account is not owned by the customer.");
+            errDictionary.Add(DEBIT_ACC_CLOSED, "Debit account is closed.");
+            errDictionary.Add(BALANCE_NOT_AVAILABLE, "Debit account balance is not available.");
+        }
+
+        private PaymentResult ProvideErrorResult(string errCode)
+        {
+            return new PaymentResult
+            {
+                IsSuccessful = false,
+                ErrorCode = errCode,
+                ErrorMessage = errDictionary[errCode]
+            };
+        }
+
+        #endregion
     }
 }
