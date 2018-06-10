@@ -12,7 +12,8 @@ namespace Demo.QuickPay.WebApi.Controllers
 {
     public class PaymentController : ApiController
     {
-        public PaymentResult Put(Payment payment)
+        [HttpPut]
+        public PaymentResult TransferMoney(Payment payment)
         {
             TransferMoneyBiz transferMoneyBiz = new TransferMoneyBiz();
             return transferMoneyBiz.TransferMoney(payment);
