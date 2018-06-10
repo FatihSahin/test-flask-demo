@@ -7,12 +7,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TestFlask.Aspects;
 
 namespace Demo.QuickPay.WebApi.Controllers
 {
     public class PaymentController : ApiController
     {
-        public PaymentResult Put(Payment payment)
+        [Playback]
+        [HttpPut]
+        public PaymentResult TransferMoney(Payment payment)
         {
             TransferMoneyBiz transferMoneyBiz = new TransferMoneyBiz();
             return transferMoneyBiz.TransferMoney(payment);
