@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestFlask.Aspects;
 
 namespace Demo.QuickPay.Data.Repo
 {
     public class FeeRepo
     {
+        [Playback]
         public Fee GetFee(FeeType feeType)
         {
             using (var db = new QuickPayDb())
