@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestFlask.Aspects;
 
 namespace Demo.QuickPay.Biz
 {
@@ -17,6 +18,7 @@ namespace Demo.QuickPay.Biz
             feeRepo = new FeeRepo();
         }
 
+        [Playback]
         public Fee CalculateFee(Customer customer)
         {
             FeeType feeType = customer.IsPremium ? FeeType.PremiumFee : FeeType.RegularFee;
