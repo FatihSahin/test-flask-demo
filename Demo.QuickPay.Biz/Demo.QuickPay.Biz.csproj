@@ -135,13 +135,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Demo.QuickPay.Data\Demo.QuickPay.Data.csproj">
-      <Project>{96E7F439-B770-4AA7-A739-B33959820D78}</Project>
-      <Name>Demo.QuickPay.Data</Name>
-    </ProjectReference>
+    <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FodyWeavers.xml" />
+    <ProjectReference Include="..\Demo.QuickPay.Data\Demo.QuickPay.Data.csproj">
+      <Project>{96e7f439-b770-4aa7-a739-b33959820d78}</Project>
+      <Name>Demo.QuickPay.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.2.0.0\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" />
