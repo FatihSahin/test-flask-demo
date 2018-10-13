@@ -9,14 +9,14 @@ namespace Demo.QuickPay.Biz.TestFlask
 {
     public class AccountRequestIdentifier : IRequestIdentifier<string>
     {
-        public string ResolveDisplayInfo(string req)
+        public string ResolveDisplayInfo(string accountNumber)
         {
-            return $"Account ID => {req}";
+            return $"Account ID => {accountNumber}";
         }
 
-        public string ResolveIdentifierKey(string req)
+        public string ResolveIdentifierKey(string accountNumber)
         {
-            return req; 
+            return accountNumber; 
         }
     }
 }
